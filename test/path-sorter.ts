@@ -32,6 +32,7 @@ describe('pathSorter', () => {
         expect(pathSorter(a, b)).toBe(expected);
       } catch (e) {
         e.message = `${desc}: ${e.message}`;
+        throw e;
       }
     },
   );

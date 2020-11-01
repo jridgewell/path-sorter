@@ -1,9 +1,7 @@
-const A_IS_BEFORE = -1;
-const B_IS_BEFORE = 1;
+const A_GOES_FIRST = -1;
+const B_GOES_FIRST = 1;
 
 export default function pathSorter(aPath: string, bPath: string): -1 | 0 | 1 {
-  if (aPath === bPath) return 0;
-
   const aParts = aPath.split('/');
   const bParts = bPath.split('/');
 
@@ -13,26 +11,29 @@ export default function pathSorter(aPath: string, bPath: string): -1 | 0 | 1 {
     if (aParts[i] !== bParts[i]) break;
   }
 
-  if (aParts.length === i) return A_IS_BEFORE;
-  if (bParts.length === i) return B_IS_BEFORE;
+  // If we hit the end of one of the paths, then it's first.
+  if (aParts.length === i) return A_GOES_FIRST;
+  if (bParts.length === i) return B_GOES_FIRST;
 
   // Parent directories come after siblings and sibling-descendants.
-  if (aParts[i] === '..') return B_IS_BEFORE;
-  if (bParts[i] === '..') return A_IS_BEFORE;
+  if (aParts[i] === '..') return B_GOES_FIRST;
+  if (bParts[i] === '..') return A_GOES_FIRST;
 
   // This is really to ensure that external imports will be before a `./**`.
-  if (aParts[i] === '.') return B_IS_BEFORE;
-  if (bParts[i] === '.') return A_IS_BEFORE;
+  if (aParts[i] === '.') return B_GOES_FIRST;
+  if (bParts[i] === '.') return A_GOES_FIRST;
 
   // Prioritize siblings over sibling-descendants.
-  if (aParts.length - i === 1 && bParts.length > aParts.length)
-    return A_IS_BEFORE;
-  if (bParts.length - i === 1 && aParts.length > bParts.length)
-    return B_IS_BEFORE;
+  if (aParts.length - i === 1 && bParts.length > aParts.length) {
+    return A_GOES_FIRST;
+  }
+  if (bParts.length - i === 1 && aParts.length > bParts.length) {
+    return B_GOES_FIRST;
+  }
 
   // Finally sort by sibling
-  if (aParts[i] > bParts[i]) return B_IS_BEFORE;
-  if (bParts[i] > aParts[i]) return A_IS_BEFORE;
+  if (aParts[i] > bParts[i]) return B_GOES_FIRST;
+  if (bParts[i] > aParts[i]) return A_GOES_FIRST;
 
   return 0;
 }
