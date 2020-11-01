@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es2019",
+    "module":"es2015",
+    "lib": ["es2019"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+  },
+  "exclude": [
+    "dist"
+  ],
+  "include": [
+    "src",
+    "test"
+  ]
+}
