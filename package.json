@@ -18,7 +18,7 @@
   "repository": "https://github.com/jridgewell/path-sorter",
   "scripts": {
     "build": "run-s -n build:*",
-    "build:rollup": "rollup -c rollup.config.ts",
+    "build:rollup": "rollup -c rollup.config.js",
     "build:ts": "tsc --project tsconfig.build.json",
     "pregen:test": "npm run build",
     "gen:test": "node test/build.js > test/cases.ts",

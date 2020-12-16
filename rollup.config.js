@@ -1,16 +1,13 @@
 import typescript from '@rollup/plugin-typescript';
 
-const pkg = require('./package.json');
-
-function common(esm) {
+function configure(esm) {
   return {
-    input: 'src/dedent.ts',
+    input: 'src/path-sorter.ts',
     output: esm
       ? { format: 'es', dir: 'dist', entryFileNames: '[name].mjs', sourcemap: true }
-      : { format: 'umd', name: 'dedent', dir: 'dist', entryFileNames: '[name].umd.js', sourcemap: true },
+      : { format: 'umd', name: 'pathSorter', dir: 'dist', entryFileNames: '[name].umd.js', sourcemap: true },
     plugins: [
-      // Compile TypeScript files
-      typescript(esm ? {} : { target: 'ES5' }),
+      typescript({ tsconfig: './tsconfig.build.json' }),
     ],
     watch: {
       include: 'src/**',
@@ -18,4 +15,4 @@ function common(esm) {
   };
 }
 
-export default [common(false), common(true)];
+export default [configure(false), configure(true)];
