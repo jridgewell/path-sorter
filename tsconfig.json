@@ -6,6 +6,7 @@
     "lib": ["es2019"],
     "strict": true,
     "sourceMap": true,
+    "inlineSources": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "declarationDir": "dist/types",
