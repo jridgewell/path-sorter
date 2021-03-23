@@ -2,7 +2,7 @@ module.exports = {
   transform: {
     '.ts': 'ts-jest',
   },
-  testMatch: ['**/test/path-sorter.ts'],
+  testMatch: ['**/test/**/*.test.ts'],
   moduleFileExtensions: ['ts', 'js'],
   coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
   coverageThreshold: {
