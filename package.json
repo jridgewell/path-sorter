@@ -37,7 +37,7 @@
     "prepublishOnly": "npm run preversion"
   },
   "devDependencies": {
-    "@rollup/plugin-typescript": "8.1.0",
+    "@rollup/plugin-typescript": "8.5.0",
     "@types/jest": "26.0.19",
     "@typescript-eslint/eslint-plugin": "4.10.0",
     "@typescript-eslint/parser": "4.10.0",
